@@ -22,7 +22,7 @@ namespace apiPrueba1.src.Data
                 Name = "Juan Pérez",
                 Email = "juan.perez@example.com",
                 Genre =  "masculino",
-                Birthdate = new DateTime(1990, 7, 4)
+                Birthdate = new DateOnly(1998, 10, 10)
             };
             await context.Users.AddAsync(user);
 
@@ -32,7 +32,7 @@ namespace apiPrueba1.src.Data
                 Name = "María González",
                 Email = "maria.gonzalez@example.com",
                 Genre =  "femenino",
-                Birthdate = new DateTime(1985, 8, 2)
+                Birthdate = new DateOnly(1985, 8, 2)
             };
             await context.Users.AddAsync(user2);
 
@@ -42,7 +42,7 @@ namespace apiPrueba1.src.Data
                 Name = "Pedro Pérez",
                 Email = "maria.gonzalez@example.com",
                 Genre =  "masculino",
-                Birthdate = new DateTime(1980, 9, 1)
+                Birthdate = new DateOnly(1980, 9, 1)
             };
 
             await context.Users.AddAsync(user3);
@@ -53,7 +53,7 @@ namespace apiPrueba1.src.Data
                 Name = "Ana Pérez",
                 Email = "ana.perez@example.com",
                 Genre =  "femenino",
-                Birthdate = new DateTime(1975, 10, 3)
+                Birthdate = new DateOnly(1975, 10, 3)
             };
 
             await context.Users.AddAsync(user4);
@@ -64,7 +64,7 @@ namespace apiPrueba1.src.Data
                 Name = "José Pérez",
                 Email = "jose.perez@example.com",
                 Genre =  "masculino",
-                Birthdate = new DateTime(1970, 11, 5)
+                Birthdate = new DateOnly(1970, 11, 5)
             };
 
             await context.Users.AddAsync(user5);
@@ -75,7 +75,7 @@ namespace apiPrueba1.src.Data
                 Name = "Luisa Pérez",
                 Email = "luisa.perez@example.com",
                 Genre =  "femenino",
-                Birthdate = new DateTime(1965, 12, 6)
+                Birthdate = new DateOnly(1965, 12, 6)
             };
 
             await context.Users.AddAsync(user6);
@@ -86,7 +86,7 @@ namespace apiPrueba1.src.Data
                 Name = "Carlos Pérez",
                 Email = "carlos.perez@example.com",
                 Genre =  "masculino",
-                Birthdate = new DateTime(1960, 1, 7)
+                Birthdate = new DateOnly(1960, 1, 7)
             };
 
             await context.Users.AddAsync(user7);
@@ -97,7 +97,7 @@ namespace apiPrueba1.src.Data
                 Name = "Sofía Pérez",
                 Email = "sofia.perez@example.com",
                 Genre =  "femenino",
-                Birthdate = new DateTime(1955, 2, 8)
+                Birthdate = new DateOnly(1955, 2, 8)
             };
 
             await context.Users.AddAsync(user8);
@@ -108,7 +108,7 @@ namespace apiPrueba1.src.Data
                 Name = "Jorge Pérez",
                 Email = "jorge.perez@example.com",
                 Genre =  "masculino",
-                Birthdate = new DateTime(1950, 3, 9)
+                Birthdate = new DateOnly(1950, 3, 9)
             };
 
             await context.Users.AddAsync(user9);
@@ -119,7 +119,7 @@ namespace apiPrueba1.src.Data
                 Name = "Marta Pérez",
                 Email = "marta.perez@example.com",
                 Genre =  "femenino",
-                Birthdate = new DateTime(1945, 4, 10)
+                Birthdate = new DateOnly(1945, 4, 10)
             };
 
             await context.Users.AddAsync(user10);

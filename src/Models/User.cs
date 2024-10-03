@@ -8,7 +8,7 @@ namespace apiPrueba1.src.Models
 {
     public class User
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [RegularExpression(@"^[0-9]{1,8}-[0-9K]{1}$")]
         public required string Rut { get; set; }
@@ -22,7 +22,7 @@ namespace apiPrueba1.src.Models
         [RegularExpression(@"masculino|femenino|otro|prefiero no decirlo")]
         public required string Genre { get; set; }
 
-        public required DateTime Birthdate { get; set; }
+        public required DateOnly Birthdate { get; set; }
 
     }
 

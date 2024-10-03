@@ -1,4 +1,6 @@
 using apiPrueba1.src.Data;
+using apiPrueba1.src.Interfaces;
+using apiPrueba1.src.Repository;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +13,12 @@ Env.Load();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "Data Source";
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlite(connectionString));
+builder.Services.AddControllers();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 var app = builder.Build();
@@ -24,6 +30,8 @@ var app = builder.Build();
     await context.Database.MigrateAsync();
     await Seeder.Seed(context);
 }
+
+app.MapControllers();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -11,7 +11,7 @@ using apiPrueba1.src.Data;
 namespace apiPrueba1.src.Data.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241003000044_firstmigration")]
+    [Migration("20241003015443_firstmigration")]
     partial class firstmigration
     {
         /// <inheritdoc />
@@ -22,11 +22,11 @@ namespace apiPrueba1.src.Data.Migrations
 
             modelBuilder.Entity("apiPrueba1.src.Models.User", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("Birthdate")
+                    b.Property<DateOnly>("Birthdate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -46,7 +46,7 @@ namespace apiPrueba1.src.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });

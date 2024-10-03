@@ -8,6 +8,7 @@ using apiPrueba1.src.Data;
 using apiPrueba1.src.Models;
 using apiPrueba1.src.Interfaces;
 using apiPrueba1.src.DTOs;
+using System.Security.Cryptography.X509Certificates;
 
 namespace apiPrueba1.src.Controllers
 {
@@ -53,13 +54,69 @@ namespace apiPrueba1.src.Controllers
                     Genre = createUserDto.Genre,
                     Birthdate = createUserDto.Birthdate
                 };
+
+                var nowDate = DateOnly.FromDateTime(DateTime.Now);;
+                if(user.Birthdate > nowDate)
+                {
+                    return TypedResults.BadRequest("Fecha de nacimiento inválida");
+                }
+
+
                 await _userRepository.Post(user);
                 return TypedResults.Ok("Usuario creado");
             }
-
-            
-        
         }
 
+        [HttpPut("{id}")]
+        public async Task<IResult> UpdateUser(int id, UserDto updateUserDto)
+        {
+            var exist = await _userRepository.GetById(id);
+
+            if (!exist)
+            {
+                return TypedResults.NotFound("Usuario no encontrado");
+            }
+
+            var exist2 = await _userRepository.ExistsByRut(updateUserDto.Rut);
+
+            if (exist2)
+            {
+
+                return TypedResults.Conflict("El Rut ya existe");
+
+            }
+
+            var user = new User
+            {
+                Id = id,
+                Rut = updateUserDto.Rut,
+                Name = updateUserDto.Name,
+                Email = updateUserDto.Email,
+                Genre = updateUserDto.Genre,
+                Birthdate = updateUserDto.Birthdate
+            };
+
+            var nowDate = DateOnly.FromDateTime(DateTime.Now);
+            if (user.Birthdate > nowDate)
+            {
+                return TypedResults.BadRequest("Fecha de nacimiento inválida");
+            }
+
+            await _userRepository.Put(user);
+            return TypedResults.Ok("Usuario actualizado");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IResult> DeleteUser(int id)
+        {
+            var exist = await _userRepository.GetById(id);
+
+            if (!exist)
+            {
+                return TypedResults.NotFound("Usuario no encontrado");
+            }
+            await _userRepository.Delete(id);
+            return TypedResults.Ok("Usuario eliminado");
+        }
     }
 }

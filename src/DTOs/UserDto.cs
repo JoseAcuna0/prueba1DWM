@@ -21,6 +21,6 @@ namespace apiPrueba1.src.DTOs
         [RegularExpression(@"masculino|femenino|otro|prefiero no decirlo")]
         public required string Genre { get; set; }
 
-        public required DateTime Birthdate { get; set; }
+        public required DateOnly Birthdate { get; set; }
     }
 }

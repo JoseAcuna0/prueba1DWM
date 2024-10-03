@@ -37,6 +37,28 @@ namespace apiPrueba1.src.Repository
             return user;
         }
 
+        public async Task<User> Put(User user)
+        {
+            _dataContext.Users.Update(user);
+            await _dataContext.SaveChangesAsync();
+            return user;
+        }
+        
+        public async Task<bool> GetById(int id)
+        {
+            return await _dataContext.Users.AnyAsync(x => x.Id == id);
+        }
+
+        public async Task<User?> Delete(int id)
+        {
+            var user = await _dataContext.Users.FindAsync(id);
+            if (user != null)
+            {
+                _dataContext.Users.Remove(user);
+                await _dataContext.SaveChangesAsync();
+            }
+            return user;
+        }
         
     }
 }
