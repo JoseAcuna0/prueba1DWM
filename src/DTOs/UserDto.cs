@@ -8,7 +8,9 @@ namespace apiPrueba1.src.DTOs
 {
     public class UserDto
     {
-        public required string RUT { get; set; }
+
+        [RegularExpression(@"^[0-9]{1,8}-[0-9K]{1}$")]
+        public required string Rut { get; set; }
 
         [StringLength(100, MinimumLength = 4)]
         public required string Name { get; set; }
@@ -16,7 +18,7 @@ namespace apiPrueba1.src.DTOs
         [EmailAddress(ErrorMessage = "El email no es valido")]
         public required string Email { get; set; }
 
-        [RegularExpression(@"MASCULINO|FEMENINO|OTRO|PREFIERO NO DECIRLO")]
+        [RegularExpression(@"masculino|femenino|otro|prefiero no decirlo")]
         public required string Genre { get; set; }
 
         public required DateTime Birthdate { get; set; }

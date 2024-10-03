@@ -26,10 +26,6 @@ namespace apiPrueba1.src.Data.Migrations
                     b.Property<DateTime>("Birthdate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -41,6 +37,10 @@ namespace apiPrueba1.src.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Rut")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("id");

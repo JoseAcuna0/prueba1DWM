@@ -11,7 +11,7 @@ using apiPrueba1.src.Data;
 namespace apiPrueba1.src.Data.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241002232612_firstmigration")]
+    [Migration("20241003000044_firstmigration")]
     partial class firstmigration
     {
         /// <inheritdoc />
@@ -29,10 +29,6 @@ namespace apiPrueba1.src.Data.Migrations
                     b.Property<DateTime>("Birthdate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -44,6 +40,10 @@ namespace apiPrueba1.src.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Rut")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("id");
