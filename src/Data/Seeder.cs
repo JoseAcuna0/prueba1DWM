@@ -18,11 +18,11 @@ namespace apiPrueba1.src.Data
 
             var user = new User
             {
-                Rut = "12345678-1",
-                Name = "Juan Pérez",
-                Email = "juan.perez@example.com",
-                Genre =  "masculino",
-                Birthdate = new DateOnly(1998, 10, 10)
+                Rut = "11133378-1",
+                Name = "Claudia Carmona",
+                Email = "tammphbgigpd@example.com",
+                Genre =  "femenino",
+                Birthdate = new DateOnly(2003, 06, 11)
             };
             await context.Users.AddAsync(user);
 
@@ -83,8 +83,8 @@ namespace apiPrueba1.src.Data
             var user7 = new User
             {
                 Rut = "12345678-7",
-                Name = "Carlos Pérez",
-                Email = "carlos.perez@example.com",
+                Name = "Cristiano Ronaldo",
+                Email = "Cristiano.ronaldo@example.com",
                 Genre =  "masculino",
                 Birthdate = new DateOnly(1960, 1, 7)
             };
