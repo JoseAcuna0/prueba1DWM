@@ -9,6 +9,7 @@ using apiPrueba1.src.Models;
 using apiPrueba1.src.Interfaces;
 using apiPrueba1.src.DTOs;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace apiPrueba1.src.Controllers
 {
@@ -24,10 +25,26 @@ namespace apiPrueba1.src.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IResult> GetAllUsers()
+        public async Task<IResult> GetAllUsers(string? sort = null , string? gender = null)
         {
-            var users = await _userRepository.GetAll();
+
+            if (sort != null && sort.ToLower() != "asc" && sort.ToLower() != "desc")
+        {
+            return TypedResults.BadRequest("El valor de 'sort' debe ser 'asc' o 'desc'.");
+        }
+
+        if  (gender != null && 
+            gender.ToLower() != "masculino" && 
+            gender.ToLower() != "femenino" && 
+            gender.ToLower() != "otro" && 
+            gender.ToLower() != "prefiero no decirlo")
+        {
+            return TypedResults.BadRequest("El valor de 'gender' no es válido.");
+        }
+
+            var users = await _userRepository.GetAll(sort, gender);
             return TypedResults.Ok(users);
+
         }
 
         [HttpPost("")]

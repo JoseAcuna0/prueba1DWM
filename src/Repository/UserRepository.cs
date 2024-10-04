@@ -20,9 +20,25 @@ namespace apiPrueba1.src.Repository
             _dataContext = dataContext;
         }
 
-        public async Task<List<User>> GetAll()
+        public async Task<List<User>> GetAll(string? sort, string? gender)
         {
-            return await _dataContext.Users.ToListAsync();
+            var users = await _dataContext.Users.ToListAsync();
+            if (!string.IsNullOrEmpty(gender))
+            {
+                users = users.Where(u => u.Genre.ToLower() == gender.ToLower()).ToList();
+            }
+
+            if(sort == "asc")
+            {
+                users = users.OrderBy(u => u.Name).ToList();
+            }
+
+            else if(sort == "desc")
+            {
+                users = users.OrderByDescending(u => u.Name).ToList();
+            }
+
+            return users;
         }
 
         public async Task<bool> ExistsByRut(string rut)

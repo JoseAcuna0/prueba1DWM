@@ -8,7 +8,7 @@ namespace apiPrueba1.src.Interfaces
 {
     public interface IUserRepository
     {
-        Task<List<User>> GetAll();
+        Task<List<User>> GetAll(string? sort, string? gender);
 
         Task<bool> ExistsByRut(string rut);
 
